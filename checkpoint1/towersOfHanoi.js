@@ -29,7 +29,7 @@ const movePiece = (startStack, endStack) => {
   stacks[endStack] = stacks[endStack].push(selectedPiece);
 }
 
-const isLegal = () => {
+const isLegal = (selectedPiece, basePiece) => {
   if (selectedPiece < basePiece) 
   {
     return true;
@@ -53,16 +53,19 @@ const isLegal = () => {
 const towersOfHanoi = (startStack, endStack) => {
   
   let permittedInputs = "abc";
-  let basePiece = stacks[endStack].slice(-1);
+  let selectedPiece = stacks[endStack].pop();
+  let basePiece = stacks[endStack].pop();
 
-  // if (permittedInputs.includes(startStack) == false || permittedInputs.includes(endStack) == false) 
-  // {
-  //   return;
-  // }
-  // if (isLegal == true) 
-  // {
-  // movePiece();
-  // }
+  isLegal(selectedPiece, basePiece);
+
+  if (permittedInputs.includes(startStack) == false || permittedInputs.includes(endStack) == false) 
+  {
+    return;
+  }
+  if (isLegal == true) 
+  {
+  movePiece();
+  }
 
   movePiece(startStack, endStack);
 
