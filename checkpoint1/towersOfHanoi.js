@@ -15,33 +15,58 @@ let stacks = {
 };
 // the larger the number, the wider the ring
 
+
+
 const printStacks = () => {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-const movePiece = () => {
-  // Your code here
+const movePiece = (startStack, endStack) => {
 
+  let selectedPiece = stacks[startStack].pop();
+  stacks[endStack] = stacks[endStack].push(selectedPiece);
 }
 
 const isLegal = () => {
-  // Your code here
-
+  if (selectedPiece < basePiece) 
+  {
+    return true;
+  }
+  else 
+  {
+    return false;
+  }
 }
 
-const checkForWin = () => {
-    for (var rings in stacks) {
-        if (object.hasOwnProperty(property)) {
-          // Do things here
-        }
-      }
+// const checkForWin = () => {
+//     for (var rings in stacks) {
+//         if (object.hasOwnProperty([1, 2, 3, 4])) {
+//           console.log("You've won!");
+//           return true;
+//         }
+//       }
 
-}
+// }
 
 const towersOfHanoi = (startStack, endStack) => {
-  // Your code here
+  
+  let permittedInputs = "abc";
+  let basePiece = stacks[endStack].slice(-1);
+
+  // if (permittedInputs.includes(startStack) == false || permittedInputs.includes(endStack) == false) 
+  // {
+  //   return;
+  // }
+  // if (isLegal == true) 
+  // {
+  // movePiece();
+  // }
+
+  movePiece(startStack, endStack);
+
+  // checkForWin();
 
 }
 
