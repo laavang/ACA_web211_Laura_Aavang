@@ -28,7 +28,7 @@ const movePiece = (startStack, endStack) => {
   // removes last item from startStack, and saves it into "selectedPiece" variable
   let selectedPiece = stacks[startStack].pop();
   // adds selectedPiece variable onto end of endStack
-  stacks[endStack] = stacks[endStack].push(selectedPiece);
+  stacks[endStack].push(selectedPiece);
 }
 
 const isLegal = (startStack, endStack) => {
@@ -39,20 +39,22 @@ const isLegal = (startStack, endStack) => {
   if ( legalInputs.includes(startStack) == false || 
        legalInputs.includes(endStack) == false )
   {
-    console.log("Invalid entry.");
     return false;
   }
 
-  // if piece from startStack is smaller than endStack (or endStack is empty), then the move is legal
-  if ( stacks[endStack]=[] || stacks[startStack].slice(-1) < stacks[end].slice(-1) )
+  // if piece is moving to empty stack, move is legal
+  if ( stacks[endStack].length == 0)
     {
-     return true;
-     console.log("Legal move.");
+      return true;
     }
-    else 
+  // if piece is moving onto a larger piece, move is legal
+  else if ( stacks[startStack].slice(-1) < stacks[endStack].slice(-1) )
     {
-    return false;
-    console.log("Illegal move.");
+      return true;
+    }
+  else 
+    {
+      return false;
     }
   }
 
@@ -68,11 +70,14 @@ const isLegal = (startStack, endStack) => {
 
 const towersOfHanoi = (startStack, endStack) => {
   
-  isLegal(startStack, endStack);
-  if (isLegal == true)
-    {
-  movePiece(startStack, endStack);
-    }
+  if ( isLegal(startStack, endStack) == true )
+  {
+    movePiece(startStack, endStack);
+  }
+  else
+  {
+    console.log("Illegal move or entry.");
+  }
   // checkForWin(startStack, endStack);
 
 }
