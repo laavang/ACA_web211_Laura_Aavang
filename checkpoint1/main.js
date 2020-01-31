@@ -60,8 +60,10 @@ const isLegal = (startStack, endStack) => {
 
 const checkForWin = (stacks) => {
     // check if there's a win – i.e. when stack b or c has 4 rings
+
     if (stacks.b.length == 4 || stacks.c.length == 4) 
     {
+      console.log("************* You've won! *************");
       return true;
     }
     else 
